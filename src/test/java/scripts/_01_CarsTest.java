@@ -40,6 +40,9 @@ public class _01_CarsTest extends Base{
     public void testMediaSection(){
         driver.get("https://www.cars.com/");
         carsHomePage.signInButton.click();
+        // Added a waiter here because the source code was running too fast and could not get the right URL in the Assert
+        Waiter.pause(3);
+
         Assert.assertEquals(driver.getCurrentUrl(), "https://www.cars.com/signin/?redirect_path=%2F");
 
         Assert.assertEquals(carsSignInPage.connectWithSocialHeading.getText(), "Connect with social");
@@ -68,6 +71,9 @@ public class _01_CarsTest extends Base{
     public void testInvalidCredentials(){
         driver.get("https://www.cars.com/");
         carsHomePage.signInButton.click();
+        // Added a waiter here because the source code was running too fast and could not get the right URL in the Assert
+        Waiter.pause(3);
+
         Assert.assertEquals(driver.getCurrentUrl(), "https://www.cars.com/signin/?redirect_path=%2F");
 
         carsSignInPage.emailInputBox.sendKeys("johndoe@gmail.com");
